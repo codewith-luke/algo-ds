@@ -6,24 +6,29 @@ import (
 
 func main() {
 	x := []int{10, 20, 30, 40, 50}
-	pos, _ := Search(x, 20)
-	fmt.Println(pos)
+	pos, _ := Search(x, 10)
+	fmt.Println("position:", pos)
 }
 
-func Search(list []int, answer int) (int, error) {
-	tail := 0
-	head := len(list) - 1
+func Search(list []int, item int) (int, error) {
+	low := 0
+	high := len(list) - 1
+	count := 0
 
-	for tail <= head {
-		mid := tail + head
+	for low <= high {
+		mid := (low + high) / 2
 		guess := list[mid]
+		count++
 
-		if answer == guess {
+		fmt.Println("attempt:", guess, mid)
+
+		if guess == item {
+			fmt.Println("guesses:", count)
 			return mid, nil
-		} else if guess > answer {
-			head = mid - 1
+		} else if guess > item {
+			high = mid - 1
 		} else {
-			tail = mid + 1
+			low = mid + 1
 		}
 	}
 
