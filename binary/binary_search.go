@@ -1,14 +1,8 @@
-package main
+package binary
 
 import (
 	"fmt"
 )
-
-func main() {
-	x := []int{10, 20, 30, 40, 50}
-	pos, _ := Search(x, 10)
-	fmt.Println("position:", pos)
-}
 
 func Search(list []int, item int) (int, error) {
 	low := 0
@@ -32,5 +26,5 @@ func Search(list []int, item int) (int, error) {
 		}
 	}
 
-	return -1, fmt.Errorf("not found")
+	return -1, fmt.Errorf("none")
 }
